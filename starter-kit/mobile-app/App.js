@@ -7,13 +7,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import LoadingScreen from './src/screens/loading';
 import Home from './src/screens/home';
-import Chat from './src/screens/chat';
-import Map from './src/screens/map';
 
-import { HomeIcon, ChatIcon, MapIcon } from './src/images/svg-icons';
+import { HomeIcon } from './src/images/svg-icons';
+import CameraApp from './src/screens/camera';
 
-const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const tabBarOptions = {
   // showLabel: false,
@@ -37,33 +36,7 @@ const TabLayout = () => (
         tabBarIcon: ({color}) => (<HomeIcon fill={color}/>)
       }}
     />
-    <Tab.Screen
-      name='Chat'
-      component={ChatStackLayout}
-      options={{
-        tabBarIcon: ({color}) => (<ChatIcon fill={color} />)
-      }}
-    />
-    <Tab.Screen
-      name='Map'
-      component={MapStackLayout}
-      options={{
-        tabBarIcon: ({color}) => (<MapIcon fill={color} />)
-      }}
-    />
   </Tab.Navigator>
-);
-
-const ChatStackLayout = () => (
-  <Stack.Navigator>
-    <Stack.Screen name='Ask a Question' component={Chat} />
-  </Stack.Navigator>
-);
-
-const MapStackLayout = () => (
-  <Stack.Navigator>
-    <Stack.Screen name='Locate Assistance' component={Map} />
-  </Stack.Navigator>
 );
 
 const App = () => {
@@ -81,8 +54,14 @@ const App = () => {
   } else {
     return (
       <NavigationContainer>
-        <TabLayout/>
-      </NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Welcome"
+          component={Home}
+        />
+        <Stack.Screen name="Please Center on Ingredient List" component={CameraApp} />
+      </Stack.Navigator>
+    </NavigationContainer>
     );
   }
 };
