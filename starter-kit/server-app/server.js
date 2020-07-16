@@ -86,7 +86,7 @@ app.post('/api/ocr', (req, res) => {
       res.on('data', function (chunk) {
           text = JSON.parse(chunk)
           console.log(text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
-          mainDriver.main(text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
+          mainDriver.main(text["ParsedResults"][0].ParsedText);
       });
     });
 
