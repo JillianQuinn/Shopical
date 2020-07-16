@@ -5,8 +5,8 @@ import Config from 'react-native-config';
 import RNFS from 'react-native-fs';
 
 
-//let serverUrl = Config.STARTER_KIT_SERVER_URL;
-let serverUrl = 'http://localhost:3000';
+let serverUrl = Config.STARTER_KIT_SERVER_URL;
+//let serverUrl = 'http://localhost:3000';
 if (serverUrl.endsWith('/')) {
   serverUrl = serverUrl.slice(0, -1)
 }
@@ -71,6 +71,7 @@ class CameraApp extends PureComponent {
       const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
       //console.log(imageUriBase64);
       sendData(imageUriBase64);
+      this.props.navigation.navigate('Harmful Ingredients')
     }
   };
 }

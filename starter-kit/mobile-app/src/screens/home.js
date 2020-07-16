@@ -56,7 +56,7 @@ const Home = ({ navigation }) => (
 
       <CustomButton style={styles.buttonPosition}
         title="Go To Camera"
-        onPress={() => navigation.push('Please Center on Ingredient List')}
+        onPress={() => navigation.push('Center on Ingredient List')}
         />
     </View>
   </View>
