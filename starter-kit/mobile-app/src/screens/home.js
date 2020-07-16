@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity, Button, Alert } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import CustomButton from '../Components/CutsomButton';
+import CustomButton from '../Components/CustomButton';
 import CameraApp from './camera';
 
 const styles = StyleSheet.create({

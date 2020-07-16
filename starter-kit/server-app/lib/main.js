@@ -18,4 +18,5 @@ async function main(image) {
   }
 }
 
-main("sample.png");
+//main("sample.png");
+module.exports = { main : main };

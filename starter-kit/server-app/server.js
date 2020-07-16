@@ -7,9 +7,14 @@ const assistant = require('./lib/assistant.js');
 const port = process.env.PORT || 3000;
 
 const tesseract = require('./lib/tesseract-ocr.js');
+const mainDriver = require('./lib/main.js');
+
+const atob = require('atob');
+const fs = require('fs');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const testConnection = () => {
   return assistant.session()
@@ -53,12 +58,12 @@ app.post('/api/message', (req, res) => {
 
 // OCR API
 app.post('/api/ocr', (req, res) => {
-  console.log(req.body);
- tesseract
-   .recognize(req.body.image)
-   .then(result => res.json(result))
-   .catch(err => handleError(res, err));
-});
+
+    fs.writeFile('image.jpg', req.body.photo, {encoding: 'base64'}, function(err) {
+        console.log('File created');
+    });
+    mainDriver.main('image.jpg');
+ });
 
 const server = app.listen(port, () => {
    const host = server.address().address;
