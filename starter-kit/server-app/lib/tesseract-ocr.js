@@ -6,16 +6,8 @@ const config = {
   psm: 3,
 }
 
-const recognize = (data) => {
-    tesseract.recognize(imgUrl, config)
-      .then(text => {
-        console.log("Result:", text)
-      })
-      .catch(error => {
-        console.log(error.message)
-      })
-};
-
 module.exports = {
-  recognize: recognize,
-}; 
+  ocr: async function (image) {
+    return await tesseract.recognize("sample.png", config);
+  }
+}
