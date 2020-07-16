@@ -1,30 +1,38 @@
 # Shopical
+Environmental activists and researchers identified hundreds of chemicals and compounds that as harmful to our environment. The Shopical mobile app provides a way for consumers to check the sustainability of ingredients in beauty and food products in real-time. Users can scan the ingredients list of a product and instantly receive information about the environmentally harmful chemicals present. We hope that this will empower individuals to make purchases that are better for the environment.
 
-Forked from https://github.com/Call-for-Code/Solution-Starter-Kit-Disasters-2020
+[See Shopify's description](https://ibm.box.com/s/hijgzvu7mi0mg82ksguczrlw3cjy004d)
+
+[See Shopify's video]()
 
 Created for 2020 IBM Intern Hackathon
 
 Contributors: Tim Baer, Jillian Quinn, Jillian Smith, Kiersten Stokes, Paramjot Singh
 
 ## Required Dependencies
-### App-side
-Install the following in the **mobile-app* directory with `npm install`.
 
-* `react-native-camera`
-	* You may want to use the trunk version here `npm install --save react-native-camera@git+https://git@github.com/react-native-community/react-native-camera.git`
-* `react-native-fs`
+### Prerequisites
+* Install React Native CLI dependencies.
+  * Node.js
+  * Watchman
+  * **iOS only**
+    * Xcode
+    * CocoaPods
+  * **Android only**
+    * Java Development Kit
+    * Android Studio - add Android 9 (Pie) SDK & configure ANDROID_HOME
+    * Create an Android Virtual Device (AVD) - with Pie image (API Level 28)
+* Clone the repository.
+* Follow step 4 from [Solution-Starter-Kit-Disasters-2020](https://github.com/Call-for-Code/Solution-Starter-Kit-Disasters-2020) (ignore part about HERE_APIKEY)
 
+### Camera and OCR
+* `npm install --save react-native-camera@git+https://git@github.com/react-native-community/react-native-camera.git`
+* `npm install react-native-text-detector --save`
 
+### Database Connection
+* `npm install ibm_db`
+* `export BLUDB_UID=[insert UID]`
+* `export BLUDB_PWD=[insert PWD]`
 
-Don't forget to run `pod install` in the iOS directory for iOS development or to rebuild with `./gradlew build` in the android directory for android development.
-
-### Server-side
-Install the following in the **server-app* directory with `npm install`.
-
-* `node-tesseract-ocr`
-
-	* Also run `brew install tesseract`
-
-* `react-native-text-detector`
-* `atob`
-* `ibm_db`
+## References
+Forked from https://github.com/Call-for-Code/Solution-Starter-Kit-Disasters-2020
