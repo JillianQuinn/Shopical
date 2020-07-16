@@ -1,5 +1,5 @@
 const tesseract = require("node-tesseract-ocr")
- 
+
 const config = {
   lang: "eng",
   oem: 1,

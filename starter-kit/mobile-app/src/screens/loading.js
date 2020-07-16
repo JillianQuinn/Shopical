@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 const Loading = () => (
   <View style={styles.center}>
     <Image style={styles.image}
-      source={require('../images/logo-512.png')}
+      source={require('../images/earth-icon.png')}
     />
     <Text style={styles.title}>loading...</Text>
   </View>
