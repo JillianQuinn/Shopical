@@ -6,16 +6,15 @@ async function edit_distance(word) {
   return word;
 }
 
-// TODO: fix error handling for bad formed SQL statements
-// TODO: bulk SQL statements
 async function main(image) {
   query.open();
   let text = await tesseract_ocr.ocr(image);
-  let words = text.split(" ");
+  let words = text.split(/(\s+)/).filter( e => e.trim().length > 0);
   for (i = 0; i < words.length; ++i) {
     let res = await query.select_ingred(words[i]);
     console.log(res);
   }
+  query.close();
 }
 
-main("sample.png");
+main("names.png");
