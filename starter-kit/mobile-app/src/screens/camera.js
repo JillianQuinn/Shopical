@@ -67,7 +67,7 @@ class CameraApp extends PureComponent {
 
       const filepath = data.uri.split('//')[1];
       const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
-      console.log(imageUriBase64);
+      //console.log(imageUriBase64);
       sendData(imageUriBase64);
     }
   };

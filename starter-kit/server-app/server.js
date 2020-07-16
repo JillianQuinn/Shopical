@@ -9,12 +9,16 @@ const port = process.env.PORT || 3000;
 const tesseract = require('./lib/tesseract-ocr.js');
 const mainDriver = require('./lib/main.js');
 
+const http = require('http');
+const querystring = require('querystring');
+
 const atob = require('atob');
 const fs = require('fs');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser({limit: '50mb'}));
 
 const testConnection = () => {
   return assistant.session()
@@ -58,11 +62,37 @@ app.post('/api/message', (req, res) => {
 
 // OCR API
 app.post('/api/ocr', (req, res) => {
+    var base64 = "data:image/jpg;base64," + req.body.photo;
 
-    fs.writeFile('image.jpg', req.body.photo, {encoding: 'base64'}, function(err) {
-        console.log('File created');
+    var post_data = querystring.stringify({
+          'apikey': 'b2c7baf64b88957',
+          'base64image': base64,
+          'scale' : true,
+          'OCREngine' : 2
+      });
+
+    var post_options = {
+      host: 'api.ocr.space',
+      path: '/parse/image',
+      method: 'POST',
+      headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Length': post_data.length
+        }
+    };
+
+    var text = "";
+    var post_req = http.request(post_options, function(res) {
+      res.setEncoding('utf8');
+      res.on('data', function (chunk) {
+          text = JSON.parse(chunk)
+          console.log(text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
+          mainDriver.main(text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
+      });
     });
-    mainDriver.main('image.jpg');
+
+    post_req.write(post_data);
+    post_req.end();
  });
 
 const server = app.listen(port, () => {
