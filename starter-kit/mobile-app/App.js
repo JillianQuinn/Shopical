@@ -10,6 +10,7 @@ import Home from './src/screens/home';
 
 import { HomeIcon } from './src/images/svg-icons';
 import CameraApp from './src/screens/camera';
+import returnIngredients from './src/screens/returnIngredients';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -60,6 +61,7 @@ const App = () => {
           component={Home}
         />
         <Stack.Screen name="Please Center on Ingredient List" component={CameraApp} />
+        <Stack.Screen name="Here are Your Ingredients" component={returnIngredients} />
       </Stack.Navigator>
     </NavigationContainer>
     );

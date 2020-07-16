@@ -42,7 +42,8 @@ const Home = ({ navigation }) => (
        source={require('../images/earth-icon.png')}/>
       <CustomButton style={styles.buttonPosition}
       title="Go To Camera"
-      onPress={() => navigation.navigate('Please Center on Ingredient List')}/>
+      onPress={() => navigation.navigate('Please Center on Ingredient List')}
+      />
     </View>
   </View>
 );
