@@ -8,8 +8,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LoadingScreen from './src/screens/loading';
 import Home from './src/screens/home';
 
-import { HomeIcon } from './src/images/svg-icons';
+import { HomeIcon } from './src/images/earth-icon.png';
 import CameraApp from './src/screens/camera';
+import returnIngredients from './src/screens/returnIngredients';
+import Accordion from './src/screens/Accordion/Accordion';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -55,11 +57,9 @@ const App = () => {
     return (
       <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Welcome"
-          component={Home}
-        />
-        <Stack.Screen name="Please Center on Ingredient List" component={CameraApp} />
+        <Stack.Screen name="Welcome" component={Home}/>
+        <Stack.Screen name="Center on Ingredient List" component={CameraApp} />
+        <Stack.Screen name="Harmful Ingredients" component={Accordion} />
       </Stack.Navigator>
     </NavigationContainer>
     );

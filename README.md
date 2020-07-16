@@ -10,6 +10,7 @@ Created for 2020 IBM Intern Hackathon
 Contributors: Tim Baer, Jillian Quinn, Jillian Smith, Kiersten Stokes, Paramjot Singh
 
 ## Required Dependencies
+
 ### Prerequisites
 * Install React Native CLI dependencies.
   * Node.js

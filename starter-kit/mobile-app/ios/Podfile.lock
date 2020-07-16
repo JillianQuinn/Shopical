@@ -259,6 +259,8 @@ PODS:
     - ReactCommon/callinvoker (= 0.62.2)
   - RNCMaskedView (0.1.7):
     - React
+  - RNFS (2.16.6):
+    - React
   - RNGestureHandler (1.6.0):
     - React
   - RNReanimated (1.7.0):
@@ -267,10 +269,6 @@ PODS:
     - React
   - RNSVG (12.0.3):
     - React
-  - RNTextDetector (0.0.6):
-    - React
-    - TesseractOCRiOS (~> 4.0.0)
-  - TesseractOCRiOS (4.0.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -307,17 +305,16 @@ DEPENDENCIES:
   - ReactCommon/callinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
-  - RNTextDetector (from `../node_modules/react-native-text-detector/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - boost-for-react-native
-    - TesseractOCRiOS
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -380,6 +377,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   RNCMaskedView:
     :path: "../node_modules/@react-native-community/masked-view"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNGestureHandler:
     :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
@@ -388,8 +387,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
-  RNTextDetector:
-    :path: "../node_modules/react-native-text-detector/ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -425,14 +422,13 @@ SPEC CHECKSUMS:
   React-RCTVibration: 4356114dbcba4ce66991096e51a66e61eda51256
   ReactCommon: ed4e11d27609d571e7eee8b65548efc191116eb3
   RNCMaskedView: 90dd32f5b786bd562e876e1421ea77c700cbf71e
+  RNFS: 2bd9eb49dc82fa9676382f0585b992c424cd59df
   RNGestureHandler: dde546180bf24af0b5f737c8ad04b6f3fa51609a
   RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
   RNScreens: 03bf608b92ac0acf323f47d8f5b63a8f829340c8
   RNSVG: 7e16ddfc6e00d5aa69c9eb83e699bcce5dcb85d4
-  RNTextDetector: 3983fcecbd4a95ea4664d3269a62c1b14c3a712b
-  TesseractOCRiOS: 90638afbe43d082433f2e76b384c7901d23956df
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
 
-PODFILE CHECKSUM: 4ca4af58208f4f1f333e7b3b8f510d13c6c6be34
+PODFILE CHECKSUM: 3499eb46369c836741345445c261ad9e5185b24a
 
 COCOAPODS: 1.9.3

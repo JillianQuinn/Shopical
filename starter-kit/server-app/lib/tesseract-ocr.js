@@ -8,6 +8,6 @@ const config = {
 
 module.exports = {
   ocr: async function (image) {
-    return await tesseract.recognize("sample.png", config);
+    return await tesseract.recognize(image, config);
   }
 }
