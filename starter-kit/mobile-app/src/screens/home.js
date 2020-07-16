@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity, Button, Alert } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 import CustomButton from '../Components/CutsomButton';
+import CameraApp from './camera';
 
 const styles = StyleSheet.create({
   center: {
@@ -28,21 +30,19 @@ const styles = StyleSheet.create({
     right: -120,
   },
   buttonPosition: {
-    bottom: 150
+    bottom: 200
   }
 });
 
-const Home = () => (
+const Home = ({ navigation }) => (
   <View style={styles.center}>
     <View style={styles.view}>
       <Text style={styles.title}> SHOPICAL </Text>
       <Image style={styles.image}
-       source={require('../images/earth-icon.png')}
-       />
+       source={require('../images/earth-icon.png')}/>
       <CustomButton style={styles.buttonPosition}
-      title="Get Started"
-      onPress={() => Alert.alert('Button was pressed')}
-      />
+      title="Go To Camera"
+      onPress={() => navigation.navigate('Please Center on Ingredient List')}/>
     </View>
   </View>
 );

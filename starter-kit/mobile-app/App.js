@@ -2,14 +2,17 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import LoadingScreen from './src/screens/loading';
 import Home from './src/screens/home';
 
 import { HomeIcon } from './src/images/svg-icons';
+import CameraApp from './src/screens/camera';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const tabBarOptions = {
   // showLabel: false,
@@ -51,8 +54,14 @@ const App = () => {
   } else {
     return (
       <NavigationContainer>
-        <Home/>
-      </NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Welcome"
+          component={Home}
+        />
+        <Stack.Screen name="Please Center on Ingredient List" component={CameraApp} />
+      </Stack.Navigator>
+    </NavigationContainer>
     );
   }
 };

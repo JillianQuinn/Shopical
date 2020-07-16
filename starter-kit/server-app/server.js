@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const assistant = require('./lib/assistant.js');
 const port = process.env.PORT || 3000;
 
+const tesseract = require('./lib/tesseract-ocr.js');
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -47,6 +49,15 @@ app.post('/api/message', (req, res) => {
     .message(text, sessionid)
     .then(result => res.json(result))
     .catch(err => handleError(res, err));
+});
+
+// OCR API
+app.post('/api/ocr', (req, res) => {
+  console.log(req.body);
+ tesseract
+   .recognize(req.body.image)
+   .then(result => res.json(result))
+   .catch(err => handleError(res, err));
 });
 
 const server = app.listen(port, () => {
