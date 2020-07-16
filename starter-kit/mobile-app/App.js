@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LoadingScreen from './src/screens/loading';
 import Home from './src/screens/home';
 
-import { HomeIcon } from './src/images/svg-icons';
+import { HomeIcon } from './src/images/earth-icon.png';
 import CameraApp from './src/screens/camera';
 
 const Tab = createBottomTabNavigator();
@@ -55,10 +55,7 @@ const App = () => {
     return (
       <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Welcome"
-          component={Home}
-        />
+        <Stack.Screen name="Welcome" component={Home}/>
         <Stack.Screen name="Please Center on Ingredient List" component={CameraApp} />
       </Stack.Navigator>
     </NavigationContainer>

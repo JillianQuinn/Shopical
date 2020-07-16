@@ -1,6 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
+project 'SolutionStarterKitDisasters2020App.xcworkspace'
+
 target 'SolutionStarterKitDisasters2020App' do
   # Pods for SolutionStarterKitDisasters2020App
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"

@@ -5,7 +5,8 @@ import Config from 'react-native-config';
 import RNFS from 'react-native-fs';
 
 
-let serverUrl = Config.STARTER_KIT_SERVER_URL;
+//let serverUrl = Config.STARTER_KIT_SERVER_URL;
+let serverUrl = 'http://localhost:3000';
 if (serverUrl.endsWith('/')) {
   serverUrl = serverUrl.slice(0, -1)
 }
@@ -66,6 +67,7 @@ class CameraApp extends PureComponent {
       console.log("file location: " + data.uri);
 
       const filepath = data.uri.split('//')[1];
+      console.log("file location: " + filepath);
       const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
       //console.log(imageUriBase64);
       sendData(imageUriBase64);

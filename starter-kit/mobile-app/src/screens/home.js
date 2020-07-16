@@ -1,14 +1,20 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text, TouchableOpacity, Button, Alert } from 'react-native';
+import { StyleSheet, View, Image, Text, TouchableOpacity, TouchableHighlight, Button, Alert } from 'react-native';
+ 
 import { ScrollView } from 'react-native-gesture-handler';
+
+
 import CustomButton from '../Components/CustomButton';
 import CameraApp from './camera';
 
 const styles = StyleSheet.create({
   center: {
-    justifyContent: 'flex-end',
+    // flex: 1,
+    // flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#7295df',
+    height: 750,
     position: 'absolute',
         top: 0,
         bottom: 0,
@@ -16,23 +22,30 @@ const styles = StyleSheet.create({
         right: 0,
   },
   title: {
+    justifyContent: 'center',
+    height: 550,
     fontFamily: 'IBMPlexSans-Medium',
     fontSize: 36,
     color: '#EEEEEE',
     textAlign: 'center',
-    paddingBottom: 600
+    paddingBottom: 520,
+    // paddingTop: -30
   },
   image: {
     flex: 1,
-    width: 450,
-    height: 450,
+    width: 420,
+    height: 500,
     position: 'absolute',
-    right: -120,
+    right: -105,
+
   },
   buttonPosition: {
-    bottom: 200
+    bottom: 100,
+    justifyContent: 'center',
   }
 });
+
+
 
 const Home = ({ navigation }) => (
   <View style={styles.center}>
@@ -40,9 +53,11 @@ const Home = ({ navigation }) => (
       <Text style={styles.title}> SHOPICAL </Text>
       <Image style={styles.image}
        source={require('../images/earth-icon.png')}/>
+
       <CustomButton style={styles.buttonPosition}
-      title="Go To Camera"
-      onPress={() => navigation.navigate('Please Center on Ingredient List')}/>
+        title="Go To Camera"
+        onPress={() => navigation.push('Please Center on Ingredient List')}
+        />
     </View>
   </View>
 );
