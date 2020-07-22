@@ -81,12 +81,13 @@ app.post('/api/ocr', (req, res) => {
     };
 
     var text = "";
-    var post_req = http.request(post_options, function(res) {
-      res.setEncoding('utf8');
-      res.on('data', function (chunk) {
+    var post_req = http.request(post_options, function(response) {
+      response.setEncoding('utf8');
+      response.on('data', function (chunk) {
           text = JSON.parse(chunk)
           console.log(text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
-          mainDriver.main(text["ParsedResults"][0].ParsedText);
+          //mainDriver.main(text["ParsedResults"][0].ParsedText);
+          res.send(text);
       });
     });
 

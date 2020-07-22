@@ -5,22 +5,24 @@ import Config from 'react-native-config';
 import RNFS from 'react-native-fs';
 
 
-let serverUrl = Config.STARTER_KIT_SERVER_URL;
-//let serverUrl = 'http://localhost:3000';
+//let serverUrl = Config.STARTER_KIT_SERVER_URL;
+let serverUrl = 'http://192.168.1.99:3000';
 if (serverUrl.endsWith('/')) {
   serverUrl = serverUrl.slice(0, -1)
 }
 
 
-const sendData = function(photouri) {
+const sendData = async function(photouri) {
     var data = {'photo': `${photouri}`};
-    fetch(`${serverUrl}/api/ocr`, {
+
+    return fetch(`${serverUrl}/api/ocr`, {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
-    }).then(res => {
-      console.log(res);
-    });
+    }).then(response => response.json()).then((data) => {
+        //console.log(data["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
+        return data["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase();
+    })
 };
 
 // this is taken from https://react-native-community.github.io/react-native-camera/docs/rncamera
@@ -64,14 +66,12 @@ class CameraApp extends PureComponent {
     if (this.camera) {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
-      console.log("file location: " + data.uri);
 
       const filepath = data.uri.split('//')[1];
-      console.log("file location: " + filepath);
       const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
-      //console.log(imageUriBase64);
-      sendData(imageUriBase64);
-      this.props.navigation.navigate('Harmful Ingredients')
+      var ingredients = await sendData(imageUriBase64);
+      console.log(ingredients)
+      this.props.navigation.navigate('Harmful Ingredients', {ingredients:ingredients})
     }
   };
 }
