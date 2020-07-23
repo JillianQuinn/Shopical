@@ -30,8 +30,7 @@ class AccordionItem extends Component {
         return (
             <View style={styles.container}>
                 <TouchableWithoutFeedback onPress={this.onPress}>
-                    <View style={styles.titleContainer}>
-                        <Text style={styles.title}>{this.props.item.title}</Text>
+                    <View style={styles.titleContainer}><Text style={this.props.item.style.title}>{this.props.item.title}</Text>
                         <Image source={images.expand} style={styles.image}/>
                     </View>
                 </TouchableWithoutFeedback>
@@ -47,6 +46,9 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        backgroundColor: '#FFFFFF',
+        borderRadius: 20,
+        padding: 15,
         margin: 10
     },
     titleContainer: {

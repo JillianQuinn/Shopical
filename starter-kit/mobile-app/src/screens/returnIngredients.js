@@ -13,5 +13,4 @@ const returnIngredients = ({ navigation }) => (
     <Accordion></Accordion>
   );
   
-
   export default returnIngredients;
