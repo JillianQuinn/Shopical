@@ -13,6 +13,7 @@
     "express": "^4.17.1",
     "ibm-watson": "^5.4.0",
     "ibm_db": "^2.7.0",
+    "mysql": "^2.18.1",
     "node-tesseract-ocr": "^2.0.0",
     "react-native-text-detector": "0.0.6"
   },

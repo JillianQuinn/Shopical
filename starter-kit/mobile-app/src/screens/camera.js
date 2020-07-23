@@ -7,6 +7,8 @@ import RNFS from 'react-native-fs';
 
 //let serverUrl = Config.STARTER_KIT_SERVER_URL;
 let serverUrl = 'http://192.168.1.99:3000';
+//let serverUrl = 'http://192.168.1.195:3000';
+//serverUrl = 'http://localhost:3000';
 if (serverUrl.endsWith('/')) {
   serverUrl = serverUrl.slice(0, -1)
 }

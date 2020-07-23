@@ -2,46 +2,52 @@ import React from 'react';
 import { StyleSheet, View, Image, Text, TouchableOpacity, TouchableHighlight, Button, Alert } from 'react-native';
  
 import { ScrollView } from 'react-native-gesture-handler';
+import { Dimensions } from 'react-native'
 
 
 import CustomButton from '../Components/CustomButton';
 import CameraApp from './camera';
 
+let ScreenHeight = Dimensions.get("window").height;
 const styles = StyleSheet.create({
   center: {
     // flex: 1,
     // flexDirection: 'row',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    paddingTop: 50,
     alignItems: 'center',
     backgroundColor: '#7295df',
-    height: 750,
-    position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
+    height: ScreenHeight
   },
   title: {
     justifyContent: 'center',
-    height: 550,
+    height: ScreenHeight - 320,
     fontFamily: 'IBMPlexSans-Medium',
     fontSize: 36,
     color: '#EEEEEE',
     textAlign: 'center',
-    paddingBottom: 520,
-    // paddingTop: -30
+
   },
   image: {
     flex: 1,
+    justifyContent: 'center',
+    height: ScreenHeight/1.6,
     width: 420,
-    height: 500,
     position: 'absolute',
-    right: -105,
+    // left: -125,
+    alignSelf: 'center',
+    // height: 500,
+    // position: 'absolute',
+    // right: -105,
 
   },
   buttonPosition: {
-    bottom: 100,
-    justifyContent: 'center',
+    // alignSelf: 'center',
+    // justifyContent: 'center',
+    position: 'absolute',
+    height: ScreenHeight - 500,
+    // top: ScreenHeight - 100,
+    // bottom: ScreenHeight - 700
   }
 });
 
