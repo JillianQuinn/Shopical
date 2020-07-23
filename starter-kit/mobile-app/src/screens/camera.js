@@ -19,10 +19,9 @@ const sendData = async function(photouri) {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
-    }).then(response => response.json()).then((data) => {
-        //console.log(data["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
-        return data["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase();
-    })
+    }).then(response => response.json().then((data) => {
+        return data;
+    }));
 };
 
 // this is taken from https://react-native-community.github.io/react-native-camera/docs/rncamera

@@ -2,6 +2,8 @@ require('dotenv').config({silent: true});
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const query = require('./lib/query.js')
+
 
 const assistant = require('./lib/assistant.js');
 const port = process.env.PORT || 3000;
@@ -80,14 +82,22 @@ app.post('/api/ocr', (req, res) => {
         }
     };
 
-    var text = "";
     var post_req = http.request(post_options, function(response) {
       response.setEncoding('utf8');
-      response.on('data', function (chunk) {
-          text = JSON.parse(chunk)
-          console.log(text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
-          //mainDriver.main(text["ParsedResults"][0].ParsedText);
-          res.send(text);
+      response.on('data', async function (chunk) {
+          let text = JSON.parse(chunk);
+          let words = text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase().split(/[\s,.;:]+/);
+
+          query.open();
+
+          var list_of_ingreds = []
+          for (i = 0; i < words.length; ++i) {
+            let resp = await query.select_ingred(words[i]);
+            if (resp.length != 0) { list_of_ingreds.push(resp); }
+          }
+          console.log(list_of_ingreds)
+          res.send(list_of_ingreds);
+          query.close();
       });
     });
 
