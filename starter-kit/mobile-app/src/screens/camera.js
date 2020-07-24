@@ -71,8 +71,11 @@ class CameraApp extends PureComponent {
       const filepath = data.uri.split('//')[1];
       const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
       var ingredients = await sendData(imageUriBase64);
-      console.log(ingredients)
-      this.props.navigation.navigate('Harmful Ingredients', {ingredients:ingredients})
+      //var ingredients = [[{"DESCRIPTION": "Low concentrations can quickly kill juvenile corals, can cause colorful corals to bleach, and can potentially induce or increase the frequency of mutation in corals by causing damage to their DNA.", "HARMFULNESS": "medium", "ING_NAME": "3-Benzylidene camphor"}], [{"DESCRIPTION": "Found primarily in sunscreens, oxybenzone is toxic to coral and is contributing to the decline of reefs around the world. In the water, this chemical decreases corals' defenses against bleaching, damaging their DNA and hurting their development.", "HARMFULNESS": "medium", "ING_NAME": "oxybenzone"}]]
+
+      console.log(ingredients);
+      this.props.navigation.navigate('Harmful Ingredients',
+                      { ingredients:ingredients, picture:data.uri });
     }
   };
 }
