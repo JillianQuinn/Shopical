@@ -21,7 +21,7 @@ class AccordionItem extends Component {
 
     renderDetails = () => (
         <View>
-            <Text style={styles.description}>{this.props.item.description}</Text>
+            <Text style={styles.description}>{this.props.item[0].DESCRIPTION}</Text>
         </View>
     )
 
@@ -30,7 +30,7 @@ class AccordionItem extends Component {
         return (
             <View style={styles.container}>
                 <TouchableWithoutFeedback onPress={this.onPress}>
-                    <View style={styles.titleContainer}><Text style={this.props.item.style.title}>{this.props.item.title}</Text>
+                    <View style={styles.titleContainer}><Text style={styles.title}>{this.props.item[0].ING_NAME}</Text>
                         <Image source={images.expand} style={styles.image}/>
                     </View>
                 </TouchableWithoutFeedback>

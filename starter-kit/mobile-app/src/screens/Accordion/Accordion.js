@@ -67,12 +67,16 @@ const data = [
 ];
 
 export default class Accordion extends Component {
+    constructor(props) {
+        super(props);
+    }
     renderItem = ({item}) => <AccordionItem item={item}/>;
 
     render() {
+        console.log(this.props.route.params.ingredients)
         return (
             <View style={styles.container}>
-                <FlatList data={data} renderItem={this.renderItem} keyExtractor={(index, _) => index + ''} />   
+                <FlatList data={this.props.route.params.ingredients} renderItem={this.renderItem} keyExtractor={(index, _) => index + ''} />
             </View>
         );
     }
