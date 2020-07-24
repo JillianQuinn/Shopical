@@ -19,6 +19,7 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* SolutionStarterKitDisasters2020AppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SolutionStarterKitDisasters2020AppTests.m */; };
 		3E58C862A227432692D9AAC8 /* IBMPlexSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 62563C8814DD4A9DBC844369 /* IBMPlexSans-Bold.ttf */; };
+		45ACB2BD24C9F86600231916 /* Shopical in Resources */ = {isa = PBXBuildFile; fileRef = 45ACB2BC24C9F86500231916 /* Shopical */; };
 		6E8CC6D6C7804333DFE8BDDF /* libPods-SolutionStarterKitDisasters2020AppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0EACA7FCEC26D3912818C6 /* libPods-SolutionStarterKitDisasters2020AppTests.a */; };
 		76A45FB26EB14F76A9C87B67 /* IBMPlexSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35180C132AEA4BB482084281 /* IBMPlexSans-Medium.ttf */; };
 		914382AC963EC72D8FB01339 /* libPods-SolutionStarterKitDisasters2020App-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82BE188D872B2C503E529135 /* libPods-SolutionStarterKitDisasters2020App-tvOS.a */; };
@@ -60,6 +61,7 @@
 		2D02E47B1E0B4A5D006451C7 /* SolutionStarterKitDisasters2020App-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SolutionStarterKitDisasters2020App-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SolutionStarterKitDisasters2020App-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SolutionStarterKitDisasters2020App-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		35180C132AEA4BB482084281 /* IBMPlexSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "IBMPlexSans-Medium.ttf"; path = "../src/fonts/IBMPlex/IBMPlexSans-Medium.ttf"; sourceTree = "<group>"; };
+		45ACB2BC24C9F86500231916 /* Shopical */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Shopical; path = ../../..; sourceTree = "<group>"; };
 		48F506371DE24ABB36F059BE /* libPods-SolutionStarterKitDisasters2020App-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SolutionStarterKitDisasters2020App-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BADEF2F618EA47691595283 /* Pods-SolutionStarterKitDisasters2020App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SolutionStarterKitDisasters2020App.debug.xcconfig"; path = "Target Support Files/Pods-SolutionStarterKitDisasters2020App/Pods-SolutionStarterKitDisasters2020App.debug.xcconfig"; sourceTree = "<group>"; };
 		58DDE067226BFFA99A2E6768 /* libPods-SolutionStarterKitDisasters2020App.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SolutionStarterKitDisasters2020App.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +142,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
+				45ACB2BC24C9F86500231916 /* Shopical */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = SolutionStarterKitDisasters2020App;
@@ -362,6 +365,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				152DD0D4241F0CD20039AF48 /* Web.bundle in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				45ACB2BD24C9F86600231916 /* Shopical in Resources */,
 				3E58C862A227432692D9AAC8 /* IBMPlexSans-Bold.ttf in Resources */,
 				76A45FB26EB14F76A9C87B67 /* IBMPlexSans-Medium.ttf in Resources */,
 				D73112D78D1D4199824C6E6C /* IBMPlexSans-Light.ttf in Resources */,

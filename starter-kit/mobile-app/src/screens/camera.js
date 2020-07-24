@@ -7,6 +7,8 @@ import RNFS from 'react-native-fs';
 
 //let serverUrl = Config.STARTER_KIT_SERVER_URL;
 let serverUrl = 'http://192.168.1.99:3000';
+//let serverUrl = 'http://192.168.1.195:3000';
+//serverUrl = 'http://localhost:3000';
 if (serverUrl.endsWith('/')) {
   serverUrl = serverUrl.slice(0, -1)
 }
@@ -19,10 +21,9 @@ const sendData = async function(photouri) {
       method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
-    }).then(response => response.json()).then((data) => {
-        //console.log(data["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase());
-        return data["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase();
-    })
+    }).then(response => response.json().then((data) => {
+        return data;
+    }));
 };
 
 // this is taken from https://react-native-community.github.io/react-native-camera/docs/rncamera
