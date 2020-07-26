@@ -7,7 +7,12 @@ const PWD = "8pdsmx1x+qqzfkmb";
 const PORT = "50000";
 const PROTOCOL = "TCPIP";
 
-const connStr = "DATABASE=" + DATABASE + ";HOSTNAME=" + HOSTNAME + ";UID=" + UID + ";PWD=" + PWD + ";PORT=" + PORT + ";PROTOCOL=" + PROTOCOL + ";";
+const connStr = "DATABASE=" + DATABASE +
+                ";HOSTNAME=" + HOSTNAME +
+                ";UID=" + UID +
+                ";PWD=" + PWD +
+                ";PORT=" + PORT +
+                ";PROTOCOL=" + PROTOCOL + ";";
 
 var conn;
 
@@ -22,10 +27,11 @@ module.exports = {
     console.log("connection closed");
   },
 
-  select_ingred: async function (ingred) {
+  select_ingred: async function (ingred_list) {
     return conn.then(
       conn => {
-        return conn.query("SELECT * FROM KGV36166.INGREDIENT_LIST WHERE ING_NAME LIKE '" + ingred + "'").then(data => {
+        return conn.query("SELECT * FROM KGV36166.INGREDIENT_LIST WHERE ING_NAME IN("
+                            + ingred_list + ") ORDER BY HARM_SCALE DESC").then(data => {
           return data;
         }, err => {
           console.log(err);
@@ -33,6 +39,6 @@ module.exports = {
       }, err => {
         console.log(err)
       }
-  );
+    );
   }
 }

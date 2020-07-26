@@ -4,12 +4,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const query = require('./lib/query.js')
 
-
 const assistant = require('./lib/assistant.js');
 const port = process.env.PORT || 3000;
-
-const tesseract = require('./lib/tesseract-ocr.js');
-const mainDriver = require('./lib/main.js');
 
 const http = require('http');
 const querystring = require('querystring');
@@ -63,46 +59,50 @@ app.post('/api/message', (req, res) => {
 
 // OCR API
 app.post('/api/ocr', (req, res) => {
-    var base64 = "data:image/jpg;base64," + req.body.photo;
+  var base64 = "data:image/jpg;base64," + req.body.photo;
 
-    var post_data = querystring.stringify({
-          'apikey': 'b2c7baf64b88957',
-          'base64image': base64,
-          'scale' : true,
-          'OCREngine' : 2
-      });
+  var post_data = querystring.stringify({
+    'apikey': 'b2c7baf64b88957',
+    'base64image': base64,
+    'scale': true,
+    'OCREngine': 2
+  });
 
-    var post_options = {
-      host: 'api.ocr.space',
-      path: '/parse/image',
-      method: 'POST',
-      headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Content-Length': post_data.length
+  var post_options = {
+    host: 'api.ocr.space',
+    path: '/parse/image',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Content-Length': post_data.length
+    }
+  };
+
+  var post_req = http.request(post_options, function(response) {
+    response.setEncoding('utf8');
+    response.on('data', async function (chunk) {
+      let text = JSON.parse(chunk);
+      console.log(text);
+      if (!text["ParsedResults"][0]) { res.err(text); }
+      let words = text["ParsedResults"][0].ParsedText.replace(/[0-9]%/g, "")
+                    .replace(/\n/g, " ").toLowerCase().split(/[\s,.;:]+/);
+
+      query.open();
+      var sqlquery = "";
+      for (i = 0; i < words.length; ++i) {
+        sqlquery += "'" + words[i] + "'"
+        if (i < words.length - 1) {
+          sqlquery += ",";
         }
-    };
-
-    var post_req = http.request(post_options, function(response) {
-      response.setEncoding('utf8');
-      response.on('data', async function (chunk) {
-          let text = JSON.parse(chunk);
-          let words = text["ParsedResults"][0].ParsedText.replace(/\n/g, " ").toLowerCase().split(/[\s,.;:]+/);
-
-          query.open();
-
-          var list_of_ingreds = []
-          for (i = 0; i < words.length; ++i) {
-            let resp = await query.select_ingred(words[i]);
-            if (resp.length != 0) { list_of_ingreds.push(resp); }
-          }
-          console.log(list_of_ingreds)
-          res.send(list_of_ingreds);
-          query.close();
-      });
+      }
+      let ingredients = await query.select_ingred(sqlquery);
+      res.send(ingredients);
+      query.close();
     });
+  });
 
-    post_req.write(post_data);
-    post_req.end();
+  post_req.write(post_data);
+  post_req.end();
  });
 
 const server = app.listen(port, () => {

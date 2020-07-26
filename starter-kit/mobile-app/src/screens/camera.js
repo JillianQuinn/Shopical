@@ -2,42 +2,49 @@ import React, { PureComponent } from 'react';
 import { AppRegistry, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import Config from 'react-native-config';
+import Spinner from 'react-native-loading-spinner-overlay';
 import RNFS from 'react-native-fs';
 
-
-//let serverUrl = Config.STARTER_KIT_SERVER_URL;
 let serverUrl = 'http://192.168.1.99:3000';
 //let serverUrl = 'http://192.168.1.195:3000';
-//serverUrl = 'http://localhost:3000';
 if (serverUrl.endsWith('/')) {
   serverUrl = serverUrl.slice(0, -1)
 }
 
-
 const sendData = async function(photouri) {
-    var data = {'photo': `${photouri}`};
+  var data = {'photo': `${photouri}`};
 
-    return fetch(`${serverUrl}/api/ocr`, {
-      method: 'POST',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    }).then(response => response.json().then((data) => {
-        return data;
-    }));
+  return fetch(`${serverUrl}/api/ocr`, {
+    method: 'POST',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  }).then(response => response.json().then((data) => {
+    return data;
+  }));
 };
 
-// this is taken from https://react-native-community.github.io/react-native-camera/docs/rncamera
+// from React Native Camera Documentation
 class CameraApp extends PureComponent {
+  state = {
+    spinner: false
+  };
+
   render() {
     return (
       <View style={styles.container}>
+        <Spinner
+          visible={this.state.spinner}
+          overlayColor={'rgba(0, 0, 0, 0.5)'}
+          textContent={'One moment while Shopical fetches your ingredients...'}
+          textStyle={styles.spinnerTextStyle}
+        />
         <RNCamera
           ref={(ref) => {
             this.camera = ref;
           }}
           style={styles.preview}
           type={RNCamera.Constants.Type.back}
-          flashMode={RNCamera.Constants.FlashMode.on}
+          flashMode={RNCamera.Constants.FlashMode.off}
           androidCameraPermissionOptions={{
             title: 'Permission to use camera',
             message: 'We need your permission to use your camera',
@@ -65,41 +72,47 @@ class CameraApp extends PureComponent {
 
   takePicture = async () => {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true };
+      const options = { quality: 0.5, base64: true, pauseAfterCapture: true };
       const data = await this.camera.takePictureAsync(options);
 
       const filepath = data.uri.split('//')[1];
       const imageUriBase64 = await RNFS.readFile(filepath, 'base64');
-      var ingredients = await sendData(imageUriBase64);
-      //var ingredients = [[{"DESCRIPTION": "Low concentrations can quickly kill juvenile corals, can cause colorful corals to bleach, and can potentially induce or increase the frequency of mutation in corals by causing damage to their DNA.", "HARMFULNESS": "medium", "ING_NAME": "3-Benzylidene camphor"}], [{"DESCRIPTION": "Found primarily in sunscreens, oxybenzone is toxic to coral and is contributing to the decline of reefs around the world. In the water, this chemical decreases corals' defenses against bleaching, damaging their DNA and hurting their development.", "HARMFULNESS": "medium", "ING_NAME": "oxybenzone"}]]
 
-      console.log(ingredients);
+      this.setState({ spinner: !this.state.spinner });
+      var ingredients = await sendData(imageUriBase64);
+      this.setState({ spinner: !this.state.spinner });
+
       this.props.navigation.navigate('Harmful Ingredients',
-                      { ingredients:ingredients, picture:data.uri });
+                      { ingredients:ingredients, photo:data.uri });
     }
   };
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: 'column',
-      backgroundColor: 'black',
-    },
-    preview: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-    },
-    capture: {
-        flex: 0,
-        backgroundColor: '#fff',
-        borderRadius: 5,
-        padding: 15,
-        paddingHorizontal: 20,
-        alignSelf: 'center',
-        margin: 20,
-      }
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: '#7295df',
+  },
+  preview: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  capture: {
+    alignSelf: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    flex: 0,
+    margin: 20,
+    padding: 15,
+    paddingHorizontal: 20,
+  },
+  spinnerTextStyle: {
+    color: 'white',
+    padding: 75,
+    textAlign: 'center'
+  }
 });
 
 export default CameraApp 
