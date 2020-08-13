@@ -1,6 +1,8 @@
 # Shopical
 Environmental activists and researchers identified hundreds of chemicals and compounds that as harmful to our environment. The Shopical mobile app provides a way for consumers to check the sustainability of ingredients in beauty and food products in real-time. Users can scan the ingredients list of a product and instantly receive information about the environmentally harmful chemicals present. We hope that this will empower individuals to make purchases that are better for the environment.
 
+[See Shopical Presentation](https://docs.google.com/presentation/d/1CW5WOTQiPHPXGwLONWaUFSEp0OAMON2r1Bjp6r1b-pk/edit?usp=sharing)
+
 [See Shopical's description](https://ibm.box.com/s/hijgzvu7mi0mg82ksguczrlw3cjy004d)
 
 [See Shopical's video](https://drive.google.com/drive/folders/1-t78_cx31rg3GRFZW2BSLifxNPXRNkp5)
