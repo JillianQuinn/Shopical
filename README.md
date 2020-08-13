@@ -3,7 +3,7 @@ Environmental activists and researchers identified hundreds of chemicals and com
 
 [See Shopical Presentation](https://docs.google.com/presentation/d/1CW5WOTQiPHPXGwLONWaUFSEp0OAMON2r1Bjp6r1b-pk/edit?usp=sharing)
 
-[See Shopical's description](https://ibm.box.com/s/hijgzvu7mi0mg82ksguczrlw3cjy004d)
+[See Shopical's description](https://ibm.box.com/s/nhg7sb8o8wdp5vygpb1x7htdm7mpx61k)
 
 [See Shopical's video](https://drive.google.com/drive/folders/1-t78_cx31rg3GRFZW2BSLifxNPXRNkp5)
 
